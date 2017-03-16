@@ -1,7 +1,7 @@
 {
-  "name": "lambda-cloudwatch-spark",
-  "version": "0.1.0",
-  "description": "Better Cisco Spark notifications for AWS CloudWatch",
+  "name": "lambda-cloudwatch-event-spark",
+  "version": "0.0.1",
+  "description": "Better Cisco Spark notifications for AWS CloudWatch Events",
   "authors": [
     "Assertible <admin@assertible.com>",
     "Christopher Reichert <creichert07@gmail.com>",
@@ -25,6 +25,7 @@
     "cisco spark",
     "lambda",
     "cloudwatch",
+    "event",
     "notifications"
   ],
   "license": "MIT"
