@@ -1,0 +1,42 @@
+{
+    "account": "157530957999",
+    "detail": {
+        "awsRegion": "us-east-1",
+        "eventID": "047ea87e-c1de-434b-80d2-69b74e294ec0",
+        "eventName": "DeleteAccessKey",
+        "eventSource": "iam.amazonaws.com",
+        "eventTime": "2017-03-16T12:48:04Z",
+        "eventType": "AwsApiCall",
+        "eventVersion": "1.02",
+        "requestID": "cbee265c-0a46-11e7-8f25-89ab5f61cac9",
+        "requestParameters": {
+            "accessKeyId": "AKIAISTGBXV3QYVGTKMQ",
+            "userName": "DELETE_ME3"
+        },
+        "responseElements": null,
+        "sourceIPAddress": "70.62.227.202",
+        "userAgent": "signin.amazonaws.com",
+        "userIdentity": {
+            "accessKeyId": "ASIAIAGCYHRLPVSRJQUA",
+            "accountId": "157530957999",
+            "arn": "arn:aws:iam::157530957999:user/rnhurt",
+            "invokedBy": "signin.amazonaws.com",
+            "principalId": "AIDAJP4TJHP62NYGVPBB4",
+            "sessionContext": {
+                "attributes": {
+                    "creationDate": "2017-03-16T11:44:40Z",
+                    "mfaAuthenticated": "true"
+                }
+            },
+            "type": "IAMUser",
+            "userName": "rnhurt"
+        }
+    },
+    "detail-type": "AWS API Call via CloudTrail",
+    "id": "85a56db4-67c8-44d1-ad17-510db0957569",
+    "region": "us-east-1",
+    "resources": [],
+    "source": "aws.iam",
+    "time": "2017-03-16T12:48:04Z",
+    "version": "0"
+}

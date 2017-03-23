@@ -1,0 +1,48 @@
+{
+    "account": "157530957999",
+    "detail": {
+        "awsRegion": "us-east-1",
+        "eventID": "d3f21181-ff1c-4021-a913-f551542de195",
+        "eventName": "CreateAccessKey",
+        "eventSource": "iam.amazonaws.com",
+        "eventTime": "2017-03-16T13:01:11Z",
+        "eventType": "AwsApiCall",
+        "eventVersion": "1.02",
+        "requestID": "a10bafe7-0a48-11e7-96c9-7bb80dd87e6e",
+        "requestParameters": {
+            "userName": "DELETE_ME3"
+        },
+        "responseElements": {
+            "accessKey": {
+                "accessKeyId": "AKIAIVCQ6BYBN5QXHD3A",
+                "createDate": "Mar 16, 2017 1:01:11 PM",
+                "status": "Active",
+                "userName": "DELETE_ME3"
+            }
+        },
+        "sourceIPAddress": "70.62.227.202",
+        "userAgent": "signin.amazonaws.com",
+        "userIdentity": {
+            "accessKeyId": "ASIAIAGCYHRLPVSRJQUA",
+            "accountId": "157530957999",
+            "arn": "arn:aws:iam::157530957999:user/rnhurt",
+            "invokedBy": "signin.amazonaws.com",
+            "principalId": "AIDAJP4TJHP62NYGVPBB4",
+            "sessionContext": {
+                "attributes": {
+                    "creationDate": "2017-03-16T11:44:40Z",
+                    "mfaAuthenticated": "true"
+                }
+            },
+            "type": "IAMUser",
+            "userName": "rnhurt"
+        }
+    },
+    "detail-type": "AWS API Call via CloudTrail",
+    "id": "399534ef-5388-4598-beb2-272565a037cd",
+    "region": "us-east-1",
+    "resources": [],
+    "source": "aws.iam",
+    "time": "2017-03-16T13:01:11Z",
+    "version": "0"
+}

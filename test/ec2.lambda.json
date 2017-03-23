@@ -1,0 +1,71 @@
+{
+    "account": "157530957999",
+    "detail": {
+    "eventVersion": "1.05",
+    "userIdentity": {
+        "type": "AssumedRole",
+        "principalId": "AROAJB4NATMOO3VSNDBIM:StartStopEC2",
+        "arn": "arn:aws:sts::157530957999:assumed-role/Lambda-Account-iamrStartStopEC2LambdaRole-VUKODM8XI6HI/StartStopEC2",
+        "accountId": "157530957999",
+        "accessKeyId": "ASIAIM3PGF76A4SKMTVQ",
+        "sessionContext": {
+            "attributes": {
+                "mfaAuthenticated": "false",
+                "creationDate": "2017-03-16T07:00:07Z"
+            },
+            "sessionIssuer": {
+                "type": "Role",
+                "principalId": "AROAJB4NATMOO3VSNDBIM",
+                "arn": "arn:aws:iam::157530957999:role/lambda/Lambda-Account-iamrStartStopEC2LambdaRole-VUKODM8XI6HI",
+                "accountId": "157530957999",
+                "userName": "Lambda-Account-iamrStartStopEC2LambdaRole-VUKODM8XI6HI"
+            }
+        }
+    },
+    "eventTime": "2017-03-16T07:00:32Z",
+    "eventSource": "ec2.amazonaws.com",
+    "eventName": "StartInstances",
+    "awsRegion": "us-east-1",
+    "sourceIPAddress": "34.207.160.238",
+    "userAgent": "aws-sdk-nodejs/2.22.0 linux/v4.3.2 exec-env/AWS_Lambda_nodejs4.3 promise",
+    "requestParameters": {
+        "instancesSet": {
+            "items": [
+                {
+                    "instanceId": "i-01fbf65b25a9f721b"
+                }
+            ]
+        }
+    },
+    "responseElements": {
+        "instancesSet": {
+            "items": [
+                {
+                    "instanceId": "i-01fbf65b25a9f721b",
+                    "currentState": {
+                        "code": 0,
+                        "name": "pending"
+                    },
+                    "previousState": {
+                        "code": 80,
+                        "name": "stopped"
+                    }
+                }
+            ]
+        }
+    },
+    "requestID": "dcc53440-7f2c-466f-9f75-6e959fdf40f3",
+    "eventID": "d7a862f9-af85-4990-9018-663bb3ccf965",
+    "eventType": "AwsApiCall",
+    "recipientAccountId": "157530957999"
+},
+    "detail-type": "AWS API Call via CloudTrail",
+    "id": "85a56db4-67c8-44d1-ad17-510db0957569",
+    "region": "us-east-1",
+    "resources": [],
+    "source": "aws.iam",
+    "time": "2017-03-16T12:48:04Z",
+    "version": "0"
+}
+
+
