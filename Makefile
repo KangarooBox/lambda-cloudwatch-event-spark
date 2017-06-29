@@ -15,16 +15,14 @@ deps:
 .PHONY: test
 test:
 				@test -s $(CONFIG_FILE) || { echo "No lambda config file. Update deploy.env.example and copy it to deploy.env"; exit 1; }
-				AWS_REGION=$(AWS_REGION) $(LAMBDA_TEST) --configFile=$(CONFIG_FILE) run -x test/context.json -j test/sns-cloudwatch-event.json
+				AWS_REGION=$(AWS_REGION) $(LAMBDA_TEST) --configFile=$(CONFIG_FILE) run -x test/context.json -j test/iam.CreateAccessKey.json
 
 .PHONY: test-all
 test-all: test
+				# AWS_REGION=$(AWS_REGION) $(LAMBDA_TEST) run -x test/context.json -j test/iam.CreateAccessKey.json
+				AWS_REGION=$(AWS_REGION) $(LAMBDA_TEST) run -x test/context.json -j test/iam.DeleteAccessKey.json
 				AWS_REGION=$(AWS_REGION) $(LAMBDA_TEST) run -x test/context.json -j test/sns-cloudwatch-event.json
-				# AWS_REGION=$(AWS_REGION) $(LAMBDA_TEST) --configFile=$(CONFIG_FILE) run -x test/context.json -j test/sns-elastic-beanstalk-event.json
-				# AWS_REGION=$(AWS_REGION) $(LAMBDA_TEST) --configFile=$(CONFIG_FILE) run -x test/context.json -j test/sns-codedeploy-event.json
-				# AWS_REGION=$(AWS_REGION) $(LAMBDA_TEST) --configFile=$(CONFIG_FILE) run -x test/context.json -j test/sns-codedeploy-configuration.json
-				# AWS_REGION=$(AWS_REGION) $(LAMBDA_TEST) --configFile=$(CONFIG_FILE) run -x test/context.json -j test/sns-elasticache-event.json
-				# AWS_REGION=$(AWS_REGION) $(LAMBDA_TEST) --configFile=$(CONFIG_FILE) run -x test/context.json -j test/sns-autoscaling-event.json
+				AWS_REGION=$(AWS_REGION) $(LAMBDA_TEST) run -x test/context.json -j test/ec2.lambda.json
 
 .PHONY: package
 package:
