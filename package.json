@@ -18,7 +18,9 @@
     "url": "^0.11.0"
   },
   "devDependencies": {
-    "node-lambda": "^0.8.6"
+    "dotenv": "^4.0.0",
+    "node-lambda": "^0.8.6",
+    "lambda-local": "^1.4.2"
   },
   "keywords": [
     "aws",
