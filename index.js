@@ -119,7 +119,7 @@ exports.handler = function(event, context) {
       break;
     default:
       console.log("processing unknown notification...");
-      sparkMessage = handleEC2Instance(event,context);
+      sparkMessage = handleUnknown(event,context);
   }
 
   postMessage(sparkMessage, function(response) {
