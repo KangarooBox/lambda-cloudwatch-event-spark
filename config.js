@@ -1,14 +1,14 @@
 module.exports = {
 
   // spark webhook access token
-  accessToken: process.env.accessToken,
+  accessToken: process.env.ACCESS_TOKEN,
   // unencrypted spark webhook url
-  webhookUrl: process.env.webhookUrl,
+  webhookUrl: process.env.WEBHOOK_URL,
   // spark room to send a message to: "#general"
-  roomId: process.env.roomId,
+  roomId: process.env.ROOM_ID,
   // spark person to send a message to: "xxxxxxxx-xxx-xxxx-xxxxxxx"
-  toPersonId: process.env.toPersonId,
+  toPersonId: process.env.TO_PERSON_ID,
   // spark person to send a message to: "#general"
-  toPersonEmail: process.env.toPersonEmail
+  toPersonEmail: process.env.TO_PERSON_EMAIL
 
 }

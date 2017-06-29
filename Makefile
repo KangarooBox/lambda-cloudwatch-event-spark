@@ -1,35 +1,42 @@
-
 LAMBDA_TEST?=./node_modules/node-lambda/bin/node-lambda
-LAMBDA_FUNCTION_NAME=notifySpark
-AWS_REGION=us-east-1
-AWS_ROLE=arn:aws:iam:2132342424:role/my_role
-AWS_PROFILE=dw
+LAMBDA_FUNCTION_NAME=
+AWS_REGION=
+AWS_ROLE=
+AWS_PROFILE=default
+CONFIG_FILE=deploy.env
 
 all:
-	npm build
+				npm build
 
 .PHONY: deps
 deps:
-	npm install
+				npm install
 
 .PHONY: test
 test:
-	AWS_REGION=$(AWS_REGION) $(LAMBDA_TEST) run -x test/context.json -j test/sns-cloudwatch-event.json
-	# AWS_REGION=$(AWS_REGION) $(LAMBDA_TEST) run -x test/context.json -j test/sns-elastic-beanstalk-event.json
-	# AWS_REGION=$(AWS_REGION) $(LAMBDA_TEST) run -x test/context.json -j test/sns-codedeploy-event.json
-	# AWS_REGION=$(AWS_REGION) $(LAMBDA_TEST) run -x test/context.json -j test/sns-codedeploy-configuration.json
-	# AWS_REGION=$(AWS_REGION) $(LAMBDA_TEST) run -x test/context.json -j test/sns-elasticache-event.json
-	# AWS_REGION=$(AWS_REGION) $(LAMBDA_TEST) run -x test/context.json -j test/sns-autoscaling-event.json
+				@test -s $(CONFIG_FILE) || { echo "No lambda config file. Update deploy.env.example and copy it to deploy.env"; exit 1; }
+				AWS_REGION=$(AWS_REGION) $(LAMBDA_TEST) --configFile=$(CONFIG_FILE) run -x test/context.json -j test/sns-cloudwatch-event.json
+
+.PHONY: test-all
+test-all: test
+				AWS_REGION=$(AWS_REGION) $(LAMBDA_TEST) run -x test/context.json -j test/sns-cloudwatch-event.json
+				# AWS_REGION=$(AWS_REGION) $(LAMBDA_TEST) --configFile=$(CONFIG_FILE) run -x test/context.json -j test/sns-elastic-beanstalk-event.json
+				# AWS_REGION=$(AWS_REGION) $(LAMBDA_TEST) --configFile=$(CONFIG_FILE) run -x test/context.json -j test/sns-codedeploy-event.json
+				# AWS_REGION=$(AWS_REGION) $(LAMBDA_TEST) --configFile=$(CONFIG_FILE) run -x test/context.json -j test/sns-codedeploy-configuration.json
+				# AWS_REGION=$(AWS_REGION) $(LAMBDA_TEST) --configFile=$(CONFIG_FILE) run -x test/context.json -j test/sns-elasticache-event.json
+				# AWS_REGION=$(AWS_REGION) $(LAMBDA_TEST) --configFile=$(CONFIG_FILE) run -x test/context.json -j test/sns-autoscaling-event.json
 
 .PHONY: package
 package:
-	$(LAMBDA_TEST) package --functionName $(LAMBDA_FUNCTION_NAME)
+				$(LAMBDA_TEST) package --functionName $(LAMBDA_FUNCTION_NAME)
 
 .PHONY: deploy
 deploy:
-	$(LAMBDA_TEST) deploy --functionName $(LAMBDA_FUNCTION_NAME) \
-				--role $(AWS_ROLE) \
-				--accessKey $(AWS_ACCESS_KEY_ID) \
-				--secretKey $(AWS_ACCESS_KEY_SECRET) \
-				--region $(AWS_REGION) \
-				--profile $(AWS_PROFILE)
+				@test -s $(CONFIG_FILE) || { echo "No lambda config file. Update deploy.env.example and copy it to deploy.env"; exit 1; }
+				$(LAMBDA_TEST) deploy --functionName $(LAMBDA_FUNCTION_NAME) \
+																--role $(AWS_ROLE) \
+																--accessKey $(AWS_ACCESS_KEY_ID) \
+																--secretKey $(AWS_ACCESS_KEY_SECRET) \
+																--region $(AWS_REGION) \
+																--configFile $(CONFIG_FILE) \
+																--profile $(AWS_PROFILE)
