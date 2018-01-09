@@ -4,10 +4,10 @@ var https = require('https');
 var config = require('./config');
 var _ = require('lodash');
 
-var baseSparkMessage = {}
-if(config.roomId){ baseSparkMessage.roomId = config.roomId };
-if(config.toPersonId){ baseSparkMessage.toPersonId = config.toPersonId };
-if(config.toPersonEmail){ baseSparkMessage.toPersonEmail = config.toPersonEmail };
+var baseSparkMessage = {};
+if(config.roomId){ baseSparkMessage.roomId = config.roomId }
+if(config.toPersonId){ baseSparkMessage.toPersonId = config.toPersonId }
+if(config.toPersonEmail){ baseSparkMessage.toPersonEmail = config.toPersonEmail }
 
 var postMessage = function(message, callback) {
   var body = JSON.stringify(message);
