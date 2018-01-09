@@ -15,7 +15,7 @@ deps:
 .PHONY: test
 test:
 				@test -s $(CONFIG_FILE) || { echo "No lambda config file. Update deploy.env.example and copy it to deploy.env"; exit 1; }
-				AWS_REGION=$(AWS_REGION) $(LAMBDA_TEST) --configFile=$(CONFIG_FILE) run -x test/context.json -j test/iam.CreateAccessKey.json
+				AWS_REGION=$(AWS_REGION) $(LAMBDA_TEST) --configFile=$(CONFIG_FILE) run -x test/context.json -j test/aws.GuardDuty.json
 
 .PHONY: test-all
 test-all: test

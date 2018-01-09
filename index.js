@@ -98,6 +98,31 @@ var handleIAM = function(event, context) {
     body.push(JSON.stringify(event));
   }
 
+  var sparkMessage = {
+    text: "*" + subject + "*",
+    markdown: body.join("<br/>\n")
+  };
+
+  return _.merge(baseSparkMessage, sparkMessage);
+};
+
+// Format the message for GuardDuty events
+var handleIAM = function(event, context) {
+  var subject = event["detail-type"];
+  var detail = event.detail;
+  var body = [];
+
+  try {
+    body.push(`##${subject} - account #${event.account}`);
+
+    body.push(`- Affected Resources: ${event.resources}`);
+    body.push(`- Details: ${JSON.stringify(event.detail)}`);
+  }
+  catch(e) {
+    color = "danger";
+    body.push("\n##Couldn't process notification:");
+    body.push(JSON.stringify(event));
+  }
 
   var sparkMessage = {
     text: "*" + subject + "*",
@@ -115,6 +140,10 @@ exports.handler = function(event, context) {
   switch(event.source) {
     case "aws.iam":
       console.log("processing IAM notification...");
+      sparkMessage = handleIAM(event,context);
+      break;
+    case "aws.guardduty":
+      console.log("processing Guard Duty notification...");
       sparkMessage = handleIAM(event,context);
       break;
     default:
