@@ -1,5 +1,6 @@
 LAMBDA_TEST?=./node_modules/node-lambda/bin/node-lambda
-LAMBDA_FUNCTION_NAME=
+LAMBDA_FUNCTION_NAME=NotifySpark
+PACKAGE_DIRECTORY=build
 AWS_REGION=
 AWS_ROLE=
 AWS_PROFILE=default
@@ -26,7 +27,7 @@ test-all: test
 
 .PHONY: package
 package:
-				$(LAMBDA_TEST) package --functionName $(LAMBDA_FUNCTION_NAME)
+				$(LAMBDA_TEST) package --functionName $(LAMBDA_FUNCTION_NAME) --packageDirectory $(PACKAGE_DIRECTORY)
 
 .PHONY: deploy
 deploy:
